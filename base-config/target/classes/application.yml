@@ -1,0 +1,41 @@
+server:
+  port: 7101
+spring:
+  security:  #登录的用户名密码
+    user:
+      name: admin
+      password: a
+  cloud:
+    config:
+      server:
+        git:  #git服务器配置
+          uri:  https://github.com/Personal-Blog-3/blog-config.git
+          default-label: main
+
+    bus:  #开启bus总线
+      trace:
+        enabled: true
+
+    stream:  # 远程访问kafka
+      kafka:
+        binder:
+          brokers: 47.93.184.137 #:9092可以不要    # 云服务器的端口:kafka的端口 远程访问kafka (kafka禁止远程访问)
+          ##配置中心已经把自己创建一个主题到消息中间键里面去了，而且配置中心已经连上了eureka(将自己注册进去了)
+
+  application:
+    name: base-config   #实例名 bus
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:a@eureka1:7301/eureka,http://admin:a@eureka2:7302/eureka,http://admin:a@eureka3:7303/eureka
+  instance:
+    prefer-ip-address: true # 在地址栏上使用IP地址进行显示
+    instance-id: base-config1
+    lease-expiration-duration-in-seconds: 90  #如果现在超过了5s的时间间隔( default: 90 s )
+    lease-renewal-interval-in-seconds: 30   #设置心跳的时间间隔( default:30s )
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

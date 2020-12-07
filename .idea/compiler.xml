@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="base-eureka2" />
+        <module name="base-dashboard" />
+        <module name="base-config" />
+        <module name="base-eureka3" />
+        <module name="base-zuul" />
+        <module name="base-security" />
+        <module name="base-config2" />
+        <module name="base-eureka" />
+        <module name="base-config3" />
+        <module name="base-turbine" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="base-config" target="1.8" />
+      <module name="base-config2" target="1.8" />
+      <module name="base-config3" target="1.8" />
+      <module name="base-dashboard" target="1.8" />
+      <module name="base-eureka" target="1.8" />
+      <module name="base-eureka2" target="1.8" />
+      <module name="base-eureka3" target="1.8" />
+      <module name="base-security" target="1.8" />
+      <module name="base-turbine" target="1.8" />
+      <module name="base-zuul" target="1.8" />
+      <module name="blog" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
