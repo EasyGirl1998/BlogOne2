@@ -13,6 +13,10 @@
       <module fileurl="file://$PROJECT_DIR$/base-turbine/base-turbine.iml" filepath="$PROJECT_DIR$/base-turbine/base-turbine.iml" />
       <module fileurl="file://$PROJECT_DIR$/base-zuul/base-zuul.iml" filepath="$PROJECT_DIR$/base-zuul/base-zuul.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/blog.iml" filepath="$PROJECT_DIR$/.idea/blog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-api-article/blog-api-article.iml" filepath="$PROJECT_DIR$/blog-api-article/blog-api-article.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-api-user/blog-api-user.iml" filepath="$PROJECT_DIR$/blog-api-user/blog-api-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-restapi-article/blog-restapi-article.iml" filepath="$PROJECT_DIR$/blog-restapi-article/blog-restapi-article.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-restapi-user/blog-restapi-user.iml" filepath="$PROJECT_DIR$/blog-restapi-user/blog-restapi-user.iml" />
     </modules>
   </component>
 </project>
