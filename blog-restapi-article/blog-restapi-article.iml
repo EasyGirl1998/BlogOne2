@@ -4,7 +4,9 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="blog-restapi-article" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -32,7 +34,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="blog-api-article" />
+    <orderEntry type="module" module-name="blog-article" />
+    <orderEntry type="module" module-name="blog-api" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.1.Final" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:6.0.20.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.3.3.Final" level="project" />

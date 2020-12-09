@@ -20,10 +20,11 @@
         <module>base-dashboard</module>
         <module>base-dashboard</module>
         <module>base-zuul</module>
-        <module>blog-api-article</module>
-        <module>blog-api-user</module>
+        <module>blog-article</module>
+        <module>blog-user</module>
         <module>blog-restapi-article</module>
         <module>blog-restapi-user</module>
+        <module>blog-api</module>
     </modules>
 
     <name>blog</name>
@@ -89,6 +90,11 @@
             </dependency>
 
             <!--自己写的模块-->
+            <dependency>
+                <groupId>com.yc</groupId>
+                <artifactId>blog-api</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
             <dependency>
                 <groupId>com.yc</groupId>
                 <artifactId>blog-api-article</artifactId>
