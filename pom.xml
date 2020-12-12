@@ -25,6 +25,7 @@
         <module>blog-restapi-article</module>
         <module>blog-restapi-user</module>
         <module>blog-api</module>
+        <module>blog-article-zuul</module>
     </modules>
 
     <name>blog</name>

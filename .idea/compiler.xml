@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="blog-restapi-user" />
         <module name="blog-api-user" />
+        <module name="blog-article-zuul" />
         <module name="blog-restapi-article" />
         <module name="base-eureka2" />
         <module name="base-dashboard" />
@@ -39,6 +40,7 @@
       <module name="blog-api" target="1.8" />
       <module name="blog-api-article" target="1.8" />
       <module name="blog-api-user" target="1.8" />
+      <module name="blog-article-zuul" target="1.8" />
       <module name="blog-restapi-article" target="1.8" />
       <module name="blog-restapi-user" target="1.8" />
       <module name="blog-user" target="1.8" />
