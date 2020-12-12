@@ -19,7 +19,7 @@ spring:
     password: a
     url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong
   application:
-    name: base-provider-blog-api   #应用服务名
+    name: blog-provider-api-article   #应用服务名
 mybatis:
   configuration:
     map-underscore-to-camel-case: true    #将_转为驼峰命名
@@ -34,7 +34,7 @@ eureka:
     service-url:
       defaultZone: http://admin:a@eureka1:7301/eureka,http://admin:a@eureka2:7302/eureka,http://admin:a@eureka3:7303/eureka
   instance:
-    instance-id: base-provider-blog-api_1   #实例名
+    instance-id: blog-provider-api-article_1   #实例名
     lease-expiration-duration-in-seconds: 90  #如果现在超过了5s的时间间隔( default: 90 s )
     lease-renewal-interval-in-seconds: 30   #设置心跳的时间间隔( default:30s )
 
