@@ -24,7 +24,7 @@ public interface ArticleMapper extends MisBaseMapper<Article> {
 	List<Article> selectByHot();
 	
 	@Select("select * from article where id=#{id}")
-	@ResultMap("rm")  //  把这个给注释掉 既可以用tk.mybatis，又可以用mybatis
+	@ResultMap("rm")
 	Article selectById(int id);
 	
 	@Select("select a.* from article a join category b on a.categoryid = b.id where categoryid=#{id}")
