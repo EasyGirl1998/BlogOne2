@@ -3,7 +3,7 @@ package com.yc.blog.service;
 import javax.annotation.Resource;
 
 import com.yc.blog.bean.Article;
-import com.yc.blog.dao.impl.ArticleMapper;
+import com.yc.blog.dao.ArticleMapper;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;

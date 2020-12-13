@@ -1,4 +1,4 @@
-package com.yc.blog.dao.impl;
+package com.yc.blog.dao;
 
 import java.util.List;
 

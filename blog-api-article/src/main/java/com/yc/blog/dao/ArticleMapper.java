@@ -1,4 +1,4 @@
-package com.yc.blog.dao.impl;
+package com.yc.blog.dao;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public interface ArticleMapper extends MisBaseMapper<Article> {
 	@Select("select * from article order by id desc")
 	@Results(id="rm",value={
 	   @Result(column = "categoryid",property = "category",one=@One(select =
-	  "com.yc.blog.dao.impl.CategoryMapper.selectById"))} )
+	  "com.yc.blog.dao.CategoryMapper.selectById"))} )
 	List<Article> selectNewArticle();
 		
 	@Select("select * from article order by readCnt desc")
