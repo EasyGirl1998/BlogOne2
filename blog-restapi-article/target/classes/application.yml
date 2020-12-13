@@ -50,7 +50,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://admin:a@localhost:7301/eureka
+      defaultZone: http://admin:a@eureka1:7301/eureka,http://admin:a@eureka2:7302/eureka,http://admin:a@eureka3:7303/eureka
   instance:
     preferIpAddress: true
     instance-id: blog-restapi-artilce_1   #实例名
@@ -74,7 +74,7 @@ pagehelper:
 
 #监控配置
 info:
-  app.name: MICROSERVICE-BLOG-RESTAPI
+  app.name: blog-restapi-artilce
   company.name: yc
   build.artifactId: $project.artifactId$
   build.modelVersion: $project.modelVersion$

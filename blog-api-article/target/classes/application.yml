@@ -40,7 +40,7 @@ eureka:
 
 #监控配置
 info:
-  app.name: base-provider-blog-api
+  app.name: blog-provider-api-article
   company.name: yc
   build.artifactId: $project.artifactId$
   build.modelVersion: $project.modelVersion$
