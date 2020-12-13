@@ -11,5 +11,12 @@
 
     <artifactId>blog-api-user</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.yc</groupId>
+            <artifactId>blog-api</artifactId>
+        </dependency>
+    </dependencies>
+
 
 </project>
