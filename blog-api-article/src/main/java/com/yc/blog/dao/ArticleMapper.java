@@ -2,8 +2,7 @@ package com.yc.blog.dao;
 
 import java.util.List;
 
-import com.yc.blog.bean.Article;
-import com.yc.blog.dao.MisBaseMapper;
+import com.yc.blog.domain.Article;
 import org.apache.ibatis.annotations.*;
 
 /**

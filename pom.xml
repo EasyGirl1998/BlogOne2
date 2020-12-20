@@ -26,6 +26,7 @@
         <module>blog-restapi-user</module>
         <module>blog-api</module>
         <module>blog-article-zuul</module>
+        <module>blog-web</module>
     </modules>
 
     <name>blog</name>
@@ -109,6 +110,12 @@
             <dependency>
                 <groupId>com.yc</groupId>
                 <artifactId>blog-api</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.yc</groupId>
+                <artifactId>blog-article-zuul</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
 

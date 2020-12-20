@@ -2,7 +2,7 @@ package com.yc.blog.service;
 
 import javax.annotation.Resource;
 
-import com.yc.blog.bean.Article;
+import com.yc.blog.domain.Article;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

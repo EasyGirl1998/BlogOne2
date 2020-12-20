@@ -24,11 +24,11 @@
                 <scope>test</scope>
             </dependency>
 
-            <!-- druid的管理端网站    -->
+            <!-- druid的管理端网站
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
-                <scope>compile</scope>    <!--  因为上线后服务器中自带了这个 servlet-api,所以它配置成 compile  -->
+                <scope>compile</scope>    &lt;!&ndash;  因为上线后服务器中自带了这个 servlet-api,所以它配置成 compile  &ndash;&gt;
             </dependency>
 
             <dependency>
@@ -37,12 +37,12 @@
                 <scope>runtime</scope>
             </dependency>
 
-            <!-- druid数据源-->
+            &lt;!&ndash; druid数据源&ndash;&gt;
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>1.1.21</version>
-            </dependency>
+            </dependency>-->
 
     </dependencies>
 

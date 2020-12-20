@@ -19,6 +19,7 @@
       <module fileurl="file://$PROJECT_DIR$/blog-article-zuul/blog-article-zuul.iml" filepath="$PROJECT_DIR$/blog-article-zuul/blog-article-zuul.iml" />
       <module fileurl="file://$PROJECT_DIR$/blog-restapi-article/blog-restapi-article.iml" filepath="$PROJECT_DIR$/blog-restapi-article/blog-restapi-article.iml" />
       <module fileurl="file://$PROJECT_DIR$/blog-restapi-user/blog-restapi-user.iml" filepath="$PROJECT_DIR$/blog-restapi-user/blog-restapi-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-web/blog-web.iml" filepath="$PROJECT_DIR$/blog-web/blog-web.iml" />
     </modules>
   </component>
 </project>

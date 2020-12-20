@@ -1,0 +1,39 @@
+server:
+  port: 8095
+
+
+
+#FeignClient超时设置
+spring:
+  application:
+    name: blog-web
+  cloud:
+    loadbalancer.retry.enabled: true
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 10000
+ribbon.ConnectTimeout: 250
+ribbon.ReadTimeout: 1000
+ribbon.OkToRetryOnAllOperations: true
+ribbon.MaxAutoRetriesNextServer: 2
+ribbon.MaxAutoRetries: 1
+
+#spring devtools 更改类程序文件不使用热部署自动重启
+spring.devtools.restart.enabled: false
+spring.devtools.livereload.enabled: false
+
+#服务注册中心
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:a@eureka1:7301/eureka,http://admin:a@eureka2:7302/eureka,http://admin:a@eureka3:7303/eureka
+  register-with-eureka: false   #自己不注册到eureka中，只做eureka的客户端，读取服务
+  instance:     #实例配置, 没有在eureka注册，所以有没有都没关系
+    preferIpAddress: true
+    instance-id: blog-web_1
+    lease-expiration-duration-in-seconds: 90  #如果现在超过了5s的时间间隔( default: 90 s )
+    lease-renewal-interval-in-seconds: 30
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

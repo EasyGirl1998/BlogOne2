@@ -1,17 +1,17 @@
 package com.yc.blog.service;
 
-import javax.annotation.Resource;
 
-import com.yc.blog.bean.Article;
 import com.yc.blog.dao.ArticleMapper;
-import org.springframework.stereotype.Controller;
+import com.yc.blog.domain.Article;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Controller
+@Service
 public class ArticleService {
 	
-	@Resource
+	@Autowired(required = false)
 	private ArticleMapper am;
 
 	//按id查询

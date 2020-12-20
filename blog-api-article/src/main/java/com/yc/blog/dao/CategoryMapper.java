@@ -2,7 +2,7 @@ package com.yc.blog.dao;
 
 import java.util.List;
 
-import com.yc.blog.bean.Category;
+import com.yc.blog.domain.Category;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

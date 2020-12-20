@@ -11,7 +11,6 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 @Data
-@Table(name = "article")
 public class Article implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
