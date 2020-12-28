@@ -18,7 +18,7 @@ public interface ArticleMapper extends MisBaseMapper<Article> {
 	  "com.yc.blog.dao.CategoryMapper.selectById"))} )
 	List<Article> selectNewArticle();
 		
-	@Select("select * from article order by readCnt desc")
+	@Select("select * from article order by readCnt desc limit 0,5")
 	@ResultMap("rm")
 	List<Article> selectByHot();
 	

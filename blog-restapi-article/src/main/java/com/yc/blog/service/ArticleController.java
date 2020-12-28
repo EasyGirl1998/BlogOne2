@@ -3,6 +3,7 @@ package com.yc.blog.service;
 import javax.annotation.Resource;
 
 import com.yc.blog.domain.Article;
+import com.yc.blog.domain.Category;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,26 +15,6 @@ public class ArticleController {
 	
 	@Resource
 	private ArticleService articleService;
-	
-//	@Resource
-//	private CategoryMapper cm;
-	
-
-	/*
-	@GetMapping("toAddArticle")
-	public String toaddArticle(Model m) {
-		m.addAttribute("clist", cm.selectAll());
-		return "addArticle";
-	}
-
-	@PostMapping("addArticle")
-	public String addArticle(Article article,@SessionAttribute User loginedUser) {
-		//业务验证自行添加
-		
-		article.setAuthor(loginedUser.getName());
-		am.AddArticle(article);
-		return "redirect:article.html?id=" + article.getId();
-	}*/
 
 	@GetMapping(value = "/{id}")
 	public Article findById(@PathVariable Integer id){
@@ -53,5 +34,15 @@ public class ArticleController {
 	@GetMapping(value = "/findCategory/{id}")
 	public List<Article> findCategory(@PathVariable Integer id) {
 		return articleService.findByCategory(id);
+	}
+
+	@GetMapping(value = "/category")
+	public List<Category> Category() {
+		return articleService.findCategory();
+	}
+
+	@PostMapping(value = "/addArticle")
+	public int addArticle(Article article) {
+		return articleService.addArticle(article);
 	}
 }

@@ -1,6 +1,6 @@
 package com.yc.zuul;
 
-import com.yc.zuul.filters.AuthorizedRequestFilter;
+//import com.yc.zuul.filters.AuthorizedRequestFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
@@ -13,8 +13,8 @@ public class ZuulApp {
         SpringApplication.run(ZuulApp.class, args);
     }
 
-    @Bean
+ /*   @Bean
     public AuthorizedRequestFilter getAuthorizedRequestFilter() {
         return new AuthorizedRequestFilter();
-    }
+    }*/
 }

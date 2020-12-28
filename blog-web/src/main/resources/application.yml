@@ -1,6 +1,8 @@
 server:
   port: 8095
-
+logging:
+  level:
+    com.yc.blog: debug
 
 
 #FeignClient超时设置

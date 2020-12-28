@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 @Mapper
-public interface CategoryMapper {
+public interface CategoryMapper extends MisBaseMapper<Category> {
 	
 	@Select("select * from category")
 	List<Category> selectAll();

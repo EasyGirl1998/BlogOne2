@@ -6,25 +6,21 @@ import com.yc.blog.biz.BizException;
 import com.yc.blog.biz.UserBiz;
 import com.yc.blog.dao.UserMapper;
 import com.yc.blog.util.MD5Utils;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.io.File;
-import java.io.IOException;
 
-@Controller
+@Service
 public class UserService {
 
-    @Resource
+    @Autowired(required = false)
     private UserMapper userMapper;
 
-    @Resource
+    @Autowired
     private UserBiz userBiz;
 
     public User findByAccount(String account){

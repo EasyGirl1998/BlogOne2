@@ -2,7 +2,9 @@ package com.yc.blog.service;
 
 
 import com.yc.blog.dao.ArticleMapper;
+import com.yc.blog.dao.CategoryMapper;
 import com.yc.blog.domain.Article;
+import com.yc.blog.domain.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ public class ArticleService {
 	@Autowired(required = false)
 	private ArticleMapper am;
 
+	@Autowired(required = false)
+	private CategoryMapper categoryMapper;
 	//按id查询
 	public Article findById(Integer id){
 		return am.selectById(id);
@@ -39,5 +43,10 @@ public class ArticleService {
 	public int addArticle(Article article){
 
 		return am.AddArticle(article);
+	}
+
+	//查分类
+	public List<Category> findCategory(){
+		return categoryMapper.selectAll();
 	}
 }

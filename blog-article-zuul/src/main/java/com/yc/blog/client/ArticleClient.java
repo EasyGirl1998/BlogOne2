@@ -1,6 +1,7 @@
 package com.yc.blog.client;
 
 import com.yc.blog.config.FeignClientConfig;
+import com.yc.blog.domain.Article;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,4 +26,12 @@ public interface ArticleClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/yc-api/blog-proxy/blog/findCategory/{id}")
     String findByCategory(@RequestParam("id") Integer id);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/yc-api/blog-proxy/blog/category")
+    String findCategory();
+
+    @RequestMapping(method = RequestMethod.POST, value = "/yc-api/blog-proxy/blog/addArticle",
+            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    String addArticle(Article article);
 }

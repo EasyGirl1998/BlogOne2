@@ -53,7 +53,7 @@
       <div class="collapse navbar-collapse" id="header-navbar">
         <ul class="nav navbar-nav navbar-right">
           <li class="hidden-index active"><a data-cont="异清轩首页" href="index.html">异清轩首页</a></li>
-          <li th:each="c: ${categorys}"><a th:href=" 'category.html?id=' + ${c.id} " th:text=${c.name}>前端技术</a></li>
+          <li v-for="c in category"><a :href=" 'category.html?id=' + c.id ">{{c.name}}</a></li>
         </ul>
         <form class="navbar-form visible-xs" action="/Search" method="post">
           <div class="input-group">
@@ -63,36 +63,72 @@
             </span> </div>
         </form>
       </div>
+      <script>
+        var vue1 = new Vue({
+          el: "#header-navbar",
+          data:{
+            category:[],
+          },
+          created : function(){
+            axios.get("/article/category",{
+            }).then(res=>{
+              this.category = res.data;
+            });
+          }
+        });
+      </script>
     </div>
   </nav>
 </header>
 <section class="container">
   <div class="content-wrap">
     <div class="content">
+      <div id="content" >
       <header class="article-header">
-        <h1 class="article-title"><a href="article.html" th:text="${article.title}">php如何判断一个日期的格式是否正确</a></h1>
+        <h1 class="article-title">
+          <a href="article.html" >{{Articles.title}}</a>
+        </h1>
         <div class="article-meta"> <span class="item article-meta-time">
-          <time class="time" data-toggle="tooltip" data-placement="bottom" title="时间：2016-1-4 10:29:39"><i class="glyphicon glyphicon-time"></i><span th:text="${article.createtime}"> 2016-1-4 10:29:39</span></time>
-          </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="来源：第一PHP社区"><i class="glyphicon glyphicon-globe"></i> 第一PHP社区</span> <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="栏目：后端程序"><i class="glyphicon glyphicon-list"></i> <a href="program" title="" th:text="${article.category.name}">后端程序</a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="查看：120"> <i class="glyphicon glyphicon-eye-open">共<span th:text="${article.readcnt}"></span>人围观</i> </span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title="评论：0"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</span> </div>
+          <time class="time" data-toggle="tooltip" data-placement="bottom" title="时间：2016-1-4 10:29:39"><i class="glyphicon glyphicon-time"></i>
+            <span>{{Articles.createtime}}</span></time>
+          </span> <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="来源：第一PHP社区">
+          <i class="glyphicon glyphicon-globe"></i> 第一PHP社区</span>
+          <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="栏目：后端程序"><i class="glyphicon glyphicon-list"></i> <a href="program" title="">{{Articles.category.name}}</a></span>
+          <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="查看：120"> <i class="glyphicon glyphicon-eye-open">共<span>{{Articles.readcnt}}</span>人围观</i> </span>
+          <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title="评论：0"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</span>
+        </div>
       </header>
-      <article class="article-content" th:utext="${article.content}">
-        <p><img data-original="images/banner/banner_03.jpg" src="images/banner/banner_03.jpg" alt="" /></p>
-        <p> 用php获取上个月最后一天的时间，有两种方法，都非常简单，详细实现源码如下： </p>
-        <pre class="prettyprint lang-php">&lt;?php
-  date_default_timezone_set("PRC"); //设置时区
-  //方法一
-  $times = date("d") * 24 * 3600;
-  echo date("Y-m-d H:i:s", time()-$times);
-  echo '&lt;br/&gt;';
-  //方法二
-  $day = date('d');
-  echo date("Y-m-d H:i:s", strtotime(-$day.' day'));
-?&gt;</pre>
-        <p> 方法一是利用当前时间离本月初有多少时间，然后用当前时间减去这个时间差，就可以得到上月最后一天了。 </p>
-        <p> 方法二是先计算本月多少号，即离月初有多少天，然后用strtotime计算出$day天前的时间戳，也可以得到上个月的最后一天。 </p>
-        <p class="article-copyright hidden-xs">未经允许不得转载：<a href="">异清轩博客</a> » <a href="article.html">php如何判断一个日期的格式是否正确</a></p>
+      <article class="article-content" v-html="Articles.content">
       </article>
-      <div class="article-tags">标签：<a href="" rel="tag">PHP</a></div>
+          <div class="article-tags">标签：<a href="" rel="tag">{{Articles.label}}</a></div>
+        <p class="article-copyright hidden-xs">未经允许不得转载：<a href="">异清轩博客</a> » <a href="article.html">php如何判断一个日期的格式是否正确</a></p>
+</div>
+<script>
+  var vue = new Vue({
+    el: "#content",
+    data:{
+      Articles: "",
+      aid : "",
+    },
+    mounted() {
+      //    http://localhost:8095?id=19
+      var url = window.location.href ; //获取url中"?"符后的字串
+      var cs = url.split('?')[1];                //获取?之后的参数字符串  这里是获取到 id=19
+      //alert(url+'地址');//id=19
+      if (cs.length > 0)
+      {
+       // split（‘=‘）[1]  的意思是以 = 为分隔符，分割成左右两个，左边的为[0]存放，右边的用[1]存放
+        var cs = cs.split('=')[1];//ocd=20200818103843816416953617735
+      }
+      this.aid = cs;
+
+      axios.get("/article/"+this.aid).then(result=>{
+        this.Articles = result.data;
+        console.info(this.Articles);
+      });
+    },
+  });
+</script>
       <div class="relates">
         <div class="title">
           <h3>相关推荐</h3>
@@ -148,54 +184,7 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript">
-  	//thymeleaf在js中获取对象的语法
-  	var aid = [[${param.id}]];
-  	
-  	var vue = new Vue({
-  		el : ".content-wrap",
-  		data : {
-  			//评论的数组
-  			commentlist : [],  
-  			//当前评论 
-  			comment : {
-  				articleid : aid,
-  				content : ""
-  			}       
-  		},
-  		created : function(){
-  			axios.get("querycomm",{
-  				params:{
-  					articleid : aid
-  				}
-  			}).then(res=>{
-  				this.commentlist = res.data.data;
-  			});
-  		},
-  		methods : {
-  			reply(){
-  				var param = new URLSearchParams();
-  	  			param.append("articleid",this.comment.articleid);
-  	  			param.append("content",this.comment.content);
-  				axios.post("reply.do",param).then(res=>{
-  					if(res.data.code == 1){
-  						//将新的评论追加到评论列表
-  						this.commentlist.push = res.data.data;
-  						//清空输入框的内容
-  						this.comment.content = "";
-  					} else {
-  						var msg = "";
-  						for(var error of res.data.data){
-  							msg += error.defaultMessage + "\n";
-  						}
-  						alert(msg);
-  					}
-  				});
-  			}
-  		}
-  	});
-  	
-  </script>
+
   <aside class="sidebar">
     <div class="fixed">
       <div class="widget widget-tabs">

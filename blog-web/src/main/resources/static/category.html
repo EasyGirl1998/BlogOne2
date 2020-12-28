@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="www.thymeleaf.com" lang="zh-CN">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit">
@@ -15,6 +15,8 @@
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/nprogress.js"></script>
 <script src="js/jquery.lazyload.min.js"></script>
+  <script src="js/vue.js"></script>
+  <script src="js/axios.js"></script>
 <!--[if gte IE 9]>
   <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
   <script src="js/html5shiv.min.js" type="text/javascript"></script>
@@ -51,7 +53,7 @@
       <div class="collapse navbar-collapse" id="header-navbar">
         <ul class="nav navbar-nav navbar-right">
           <li class="hidden-index active"><a data-cont="异清轩首页" href="index.html">异清轩首页</a></li>
-          <li th:each="c : ${categorys}"><a th:href=" 'category.html?id=' + ${c.id}" th:text="${c.name}">前端技术</a></li>
+          <li v-for="c in category"><a :href="'category.html?id='+c.id">{{c.name}}</a></li>
         </ul>
         <form class="navbar-form visible-xs" action="/Search" method="post">
           <div class="input-group">
@@ -61,29 +63,69 @@
             </span> </div>
         </form>
       </div>
+      <script>
+        var vue1 = new Vue({
+          el: "#header-navbar",
+          data:{
+            category:[],
+          },
+          created : function(){
+            axios.get("/article/category",{
+            }).then(res=>{
+              this.category = res.data;
+              console.info(res.data);
+            });
+          }
+        });
+      </script>
     </div>
   </nav>
 </header>
 <section class="container">
-  <div class="content-wrap">
-    <div class="content">
+  <div class="content-wrap" >
+    <div class="content" id="categoryArticle">
       <div class="title">
         <h3>后端程序</h3>
       </div>
-      <article th:each="cArticle : ${categoryArticle}" class="excerpt excerpt-1"><a class="focus" href="article.html" title=""><img class="thumb" data-original="images/excerpt.jpg" src="images/excerpt.jpg" alt=""></a>
-        <header><a class="cat" href="program" th:text="${cArticle.category.name}">后端程序<i></i></a>
-          <h2><a th:href=" 'article.html?id='+${cArticle.id} " title="" th:text="${cArticle.title}">php如何判断一个日期的格式是否正确</a></h2>
+      <article v-for="c in categoryArticles" class="excerpt excerpt-1"><a class="focus" href="article.html" title=""><img class="thumb" data-original="images/excerpt.jpg" src="images/excerpt.jpg" alt=""></a>
+        <header><a class="cat" href="program">{{c.category.name}}<i></i></a>
+          <h2><a :href=" 'article.html?id='+c.id " title="">{{c.title}}</a></h2>
         </header>
         <p class="meta">
-          <time class="time"><i class="glyphicon glyphicon-time"></i><span th:text=${cArticle.createtime}></span></time>
-          <span class="views"><i class="glyphicon glyphicon-eye-open"></i> 共<span th:text=${cArticle.readcnt}></span>人围观</span> <a class="comment" href="article.html#comment"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</a></p>
-        <p class="note">可以用strtotime()把日期（$date）转成时间戳，再用date()按需要验证的格式转成一个日期，来跟$date比较是否相同来验证这个日期的格式是否是正确的。所以要验证日期格式 ... </p>
+          <time class="time"><i class="glyphicon glyphicon-time"></i><span>{{c.createtime}}</span></time>
+          <span class="views"><i class="glyphicon glyphicon-eye-open"></i> 共<span>{{c.readcnt}}</span>人围观</span> <a class="comment" href="article.html#comment"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</a></p>
+        <p class="note">{{c.content.substring(0,50)}}</p>
       </article>
       <!-- 设置无限翻页 -->  
       <!-- <div id="pagination">
 			<a href="?" class="next">next</a>
 	  </div> -->
     </div>
+    <script>
+      var vue = new Vue({
+        el:"#categoryArticle",
+        data:{
+          categoryArticles:[],
+          aid: "",
+        },
+        mounted:function() {
+          //    http://localhost:8095?id=19
+          var url = window.location.href ; //获取url中"?"符后的字串
+          var cs = url.split('?')[1];                //获取?之后的参数字符串  这里是获取到 id=19
+          //alert(url+'地址');//id=19
+          if (cs.length > 0)
+          {
+            // split（‘=‘）[1]  的意思是以 = 为分隔符，分割成左右两个，左边的为[0]存放，右边的用[1]存放
+            var cs = cs.split('=')[1];//ocd=20200818103843816416953617735
+          }
+          this.aid = cs;
+          axios.get("/article/category/"+this.aid).then(result=>{
+            this.categoryArticles = result.data;
+            console.info(this.categoryArticles);
+          });
+        }
+      });
+    </script>
   </div>
   <aside class="sidebar">
     <div class="fixed">
