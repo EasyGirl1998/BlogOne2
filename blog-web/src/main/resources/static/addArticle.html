@@ -48,16 +48,16 @@
                     </li>
                 </ul>
                 <a data-toggle="modal" data-target="#loginModal" class="login" rel="nofollow">Hi,请登录</a>&nbsp;&nbsp;
-                <a href="javascript:;" class="register" rel="nofollow">我要注册</a>&nbsp;&nbsp;
+                <a v-bind:href="link1" class="register" rel="nofollow">我要注册</a>&nbsp;</div>
                 <a v-bind:href="link" rel="nofollow">发表文章</a>&nbsp;
-                <a href="" rel="nofollow">找回密码</a>
+
             </div>
             <script>
                 var vue3 = new Vue({
                     el: '#links',
                     data: {
                         link: "addArticle.html",
-                        link1: "https//www.baidu.com",
+                        link1: "register.html",
                         link2: "www.baidu.com",
                         img: '8.jpg'
                     }
@@ -72,7 +72,7 @@
                     <li class="hidden-index active"><a data-cont="异清轩首页" href="index.html">异清轩首页</a></li>
                     <li  v-for="c in category"><a :href="'category.html?id='+c.id">{{c.name}}</a></li>
                 </ul>
-                <form class="navbar-form visible-xs" action="/Search" method="post">
+                <form class="navbar-form visible-xs" action="/Search" method="post" >
                     <div class="input-group">
                         <input type="text" name="keyword" class="form-control" placeholder="请输入关键字" maxlength="20" autocomplete="off">
                         <span class="input-group-btn">
@@ -103,40 +103,42 @@
 <section class="container">
   <div class="content-wrap">
   		<h1>文章录入</h1>
-    	<form action="/article/addArticle" method="post" id="articleinfo">
-    	
+    	<form action="#" method="" id="articleinfo">
+
     	标题:<br>
-    		<input name="title">
+    		<input type="text" name="title" v-model="title"/> <!--v-model="title"-->
     	<br>
     	文章分类:<br>
-    		<select name="categoryid">
+    		<select name="categoryid" v-model="categoryid">
     			<option v-for="c in category" v-bind:value="c.id">{{c.name}}</option>
     		</select>
     	<br>
     	标签:<br>
-    		<input name="label">
+    		<input type="text" name="label" v-model="label"/> <!-- v-model="label"-->
     	<br>
     	内容:<br>
     		<textarea name="content" id="content" rows="" cols=""></textarea>
-            <script type="text/javascript">
-                var ckeditor; //定义全局变量 ckeditor
-                $(function () {//当全部DOM元素加载完毕后执行下面语句，不加此句javascript将无法找到TextBox1
-                    ckeditor = CKEDITOR.replace("content"); //用CKEDITOR.replace命令将TextBox1格式化成富文本
-                });
-            </script>
     	<br>
     	<!--<submit type="button" v-click="add()">发布</submit>-->
-        <button>发布</button>
+        <button type="button" @click="add()" onclick="rediect()">发布</button>
+          <!--  <input type="button" value="发表" onclick="add()">-->
     	</form>
   </div>
 </section>
 </div>
 <script>
+    var ckeditor; //定义全局变量 ckeditor
+    $(function () {//当全部DOM元素加载完毕后执行下面语句，不加此句javascript将无法找到TextBox1
+        ckeditor = CKEDITOR.replace("content"); //用CKEDITOR.replace命令将TextBox1格式化成富文本
+
+    });
     var vue = new Vue({
         el:"#article",
         data:{
            category: [],
-           content: ""
+           title:'',
+           categoryid:1,
+           label:'',
         },
         created : function(){
             axios.get("/article/category",{
@@ -144,44 +146,33 @@
                 this.category = res.data;
             });
         },
-        /*methods:{
-             add(){
-                 $.ajax(
-                     {
-                         url : "/article/addArticle",
-                         type : "POST",
-                         dataType:"json",
-                         contentType:'application/json;charset=UTF-8',
-                         data:JSON.stringify({
-                             id:'1',
-                             author:'zhangsan',
-                             title:'hello',
-                             content:'test',
-                             keywords:'2',
-                             description:'',
-                             categoryid:'1',
-                             lable: 'Test',
-                             titleimgs: '',
-                             status:'',
-                             createtime:'',
-                             readcnt:'2000',
-                             agreecnt:'136'
-                         }),
-                         success :
-                             function(data) {
-                                 console.info(data.author);
-                                 console.info(data.title);
-                                 alert(data.author);
-                             },
-                         error:function(data){
-                             console.info(data.author);
-                             console.info(data.title);
-                             alert("err");
-                         }
-                     });
-             },
-        },*/
+        methods: {
+            add(){
+                var val =ckeditor.document.getBody().getHtml();
+                axios({
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    url: '/article/addArticle',
+                    method:'POST',
+                    data:{
+                        title:this.title,
+                        categoryid: this.categoryid,
+                        label: this.label,
+                        content:val
+                    }
+                }).then(res=>{
+                    console.log(res.data);
+                })
+            }
+        }
     });
+
+    function rediect(){
+        alert("发布成功！");
+        window.location.href='http://localhost:8095/index.html';
+    }
+
 </script>
 <footer class="footer">
     <div class="container">

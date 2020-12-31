@@ -13,11 +13,17 @@
       <module fileurl="file://$PROJECT_DIR$/base-turbine/base-turbine.iml" filepath="$PROJECT_DIR$/base-turbine/base-turbine.iml" />
       <module fileurl="file://$PROJECT_DIR$/base-zuul/base-zuul.iml" filepath="$PROJECT_DIR$/base-zuul/base-zuul.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/blog.iml" filepath="$PROJECT_DIR$/.idea/blog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-admin-zuul/blog-admin-zuul.iml" filepath="$PROJECT_DIR$/blog-admin-zuul/blog-admin-zuul.iml" />
       <module fileurl="file://$PROJECT_DIR$/blog-api/blog-api.iml" filepath="$PROJECT_DIR$/blog-api/blog-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-api-admin/blog-api-admin.iml" filepath="$PROJECT_DIR$/blog-api-admin/blog-api-admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/blog-api-article/blog-api-article.iml" filepath="$PROJECT_DIR$/blog-api-article/blog-api-article.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-api-comment/blog-api-comment.iml" filepath="$PROJECT_DIR$/blog-api-comment/blog-api-comment.iml" />
       <module fileurl="file://$PROJECT_DIR$/blog-api-user/blog-api-user.iml" filepath="$PROJECT_DIR$/blog-api-user/blog-api-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/blog-article-zuul/blog-article-zuul.iml" filepath="$PROJECT_DIR$/blog-article-zuul/blog-article-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-comment-zuul/blog-comment-zuul.iml" filepath="$PROJECT_DIR$/blog-comment-zuul/blog-comment-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-restapi-admin/blog-restapi-admin.iml" filepath="$PROJECT_DIR$/blog-restapi-admin/blog-restapi-admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/blog-restapi-article/blog-restapi-article.iml" filepath="$PROJECT_DIR$/blog-restapi-article/blog-restapi-article.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-restapi-comment/blog-restapi-comment.iml" filepath="$PROJECT_DIR$/blog-restapi-comment/blog-restapi-comment.iml" />
       <module fileurl="file://$PROJECT_DIR$/blog-restapi-user/blog-restapi-user.iml" filepath="$PROJECT_DIR$/blog-restapi-user/blog-restapi-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/blog-web/blog-web.iml" filepath="$PROJECT_DIR$/blog-web/blog-web.iml" />
     </modules>

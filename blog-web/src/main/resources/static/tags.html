@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN"  xmlns:v-bind="http://www.w3.org/1999/xhtml" >
 <head>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit">
@@ -30,7 +30,7 @@
 <header class="header">
   <nav class="navbar navbar-default" id="navbar">
     <div class="container">
-      <div class="header-topbar hidden-xs link-border">
+      <div class="header-topbar hidden-xs link-border" id="links">
         <ul class="site-nav topmenu">
           <li><a href="tags.html">标签云</a></li>
           <li><a href="readers.html" rel="nofollow">读者墙</a></li>
@@ -43,7 +43,21 @@
             </ul>
           </li>
         </ul>
-        <a href="javascript:;" class="login" rel="nofollow">Hi,请登录</a>&nbsp;&nbsp;<a href="javascript:;" class="register" rel="nofollow">我要注册</a>&nbsp;&nbsp;<a href="" rel="nofollow">找回密码</a> </div>
+
+        <a  id="loginBtn" data-toggle="modal" data-target="#loginModal" class="login" rel="nofollow">Hi,请登录</a>
+        <a v-bind:href="link1" class="register" rel="nofollow">我要注册</a>&nbsp;&nbsp;
+        <a v-bind:href="link3" rel="nofollow">发表文章</a>&nbsp;
+      </div>
+      <script>
+        var links = new Vue({
+          el: '#links',
+          data: {
+            link1: "register.html",
+            link2: "https//www.baidu.com",
+            link3: "addArticle.html",
+          }
+        });
+      </script>
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false"> <span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         <h1 class="logo hvr-bounce-in"><a href="" title=""><img src="images/logo.png" alt=""></a></h1>
@@ -123,6 +137,91 @@
         <button type="button" class="btn btn-primary" data-dismiss="modal">朕已阅</button>
       </div>
     </div>
+  </div>
+</div>
+
+<!--登录注册模态框-->
+<div class="modal fade user-select" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="loginform">
+      <form action="##" method="post" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="loginModalLabel">登录</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="loginModalUserNmae">用户名
+              <span v-text="msg.account"></span>
+            </label>
+            <input v-model="user.account" type="text" class="form-control" id="loginModalUserNmae" placeholder="请输入用户名" autofocus maxlength="15" autocomplete="off" required>
+          </div>
+          <div class="form-group">
+            <label for="loginModalUserPwd">密码
+              <span v-text="msg.pwd"></span>
+            </label>
+            <input v-model="user.pwd" type="password" class="form-control" id="loginModalUserPwd" placeholder="请输入密码" maxlength="18" autocomplete="off" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button @click="login" type="button" class="btn btn-primary">登录</button>
+        </div>
+      </form>
+    </div>
+    <script type="text/javascript">
+      var vue = new Vue({
+        el:"#loginform",
+        data:{
+          user:{
+            account:null,
+            pwd:null
+          },
+          msg:{
+            account:null,
+            pwd:null
+          }
+        },
+        methods:{
+          login(){
+            axios.get("login",{params:this.user}).then( res=>{
+              if(res.data.code == 0){
+                //遍历msg对象所有属性
+                for(name in this.msg){
+                  //遍历报错信息数组
+                  for(var i=0;i<res.data.data.length;i++){
+                    if(name==res.data.data[i].field){
+                      //将报错信息赋值给msg对应属性
+                      this.msg[name] = res.data.data[i].defaultMessage;
+                      break;
+                    }
+                  }
+                }
+              }else{
+
+                //关闭模态窗口
+                $('#loginModal').modal("hide");
+                //修改登录超链接
+                loginBtn.innerText = "欢迎:"+this.user.account;
+                //重置按钮
+                loginModal.id = "清空模态窗口的id，让按钮找不到窗口";
+              }
+            });
+          }
+        },
+        mounted:function(){
+          axios.get('doCheck').then(result=>{
+            console.log(result.data);
+            if(result.data){
+              // loginModal loginform
+              $('#loginform').modal("hide");
+              loginBtn.innerText = "欢迎:"+result.data.user.account;
+              loginModal.id = "清空模态窗口的id，让按钮找不到窗口";
+            }
+          });
+        }
+      });
+    </script>
   </div>
 </div>
 <div id="rightClickMenu">

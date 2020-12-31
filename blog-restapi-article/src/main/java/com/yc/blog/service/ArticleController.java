@@ -42,7 +42,8 @@ public class ArticleController {
 	}
 
 	@PostMapping(value = "/addArticle")
-	public int addArticle(Article article) {
+	public int addArticle(@RequestBody Article article) {
+		System.out.println(article);
 		return articleService.addArticle(article);
 	}
 }

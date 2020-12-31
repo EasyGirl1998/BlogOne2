@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="zh-CN"  xmlns:v-bind="http://www.w3.org/1999/xhtml" >
 <head>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit">
@@ -17,6 +17,7 @@
 <script src="js/jquery.lazyload.min.js"></script>
 <script src="js/vue.js"></script>
 <script src="js/axios.js"></script>
+  <script src="js/axios.min.js"></script>
 <!--[if gte IE 9]>
   <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
   <script src="js/html5shiv.min.js" type="text/javascript"></script>
@@ -45,19 +46,19 @@
             </ul>
           </li>
         </ul>
-        <a data-toggle="modal" data-target="#loginModal" class="login" rel="nofollow">Hi,请登录</a>&nbsp;&nbsp;
-        <a href="javascript:;" class="register" rel="nofollow">我要注册</a>&nbsp;&nbsp;
-        <a v-bind:href="link" rel="nofollow">发表文章</a>&nbsp;
-        <a href="" rel="nofollow">找回密码</a>
+        <a  id="loginBtn" data-toggle="modal" data-target="#loginModal" class="login" rel="nofollow">Hi,请登录</a>
+        <a v-bind:href="link1" class="register" rel="nofollow">我要注册</a>&nbsp;&nbsp;
+        <a v-bind:href="link3" rel="nofollow">发表文章</a>&nbsp;
+        <a v-bind:href="link4" rel="nofollow">管理员中心</a>
       </div>
       <script>
         var vue3 = new Vue({
           el: '#links',
           data: {
-            link: "addArticle.html",
-            link1: "https//www.baidu.com",
-            link2: "www.baidu.com",
-            img: '8.jpg'
+            link1: "register.html",
+            link2: "https//www.baidu.com",
+            link3: "addArticle.html",
+            link4: "adminlogin.html",
           }
         });
       </script>
@@ -78,8 +79,8 @@
             </span> </div>
         </form>
       </div>
-      <script>
-        var vue1 = new Vue({
+      <!--<script>
+        var header = new Vue({
           el: "#header-navbar",
           data:{
             category:[],
@@ -93,7 +94,7 @@
 
         });
 
-      </script>
+      </script>-->
     </div>
   </nav>
 </header>
@@ -112,13 +113,13 @@
         </ol>
         <div class="carousel-inner" role="listbox">
           <div class="item active"> <a href="" target="_blank"><img src="images/banner/banner_01.jpg" alt="" class="img-responsive"></a> 
-            <!--<div class="carousel-caption"> </div>--> 
+
           </div>
           <div class="item"> <a href="" target="_blank"><img src="images/banner/banner_02.jpg" alt="" class="img-responsive"></a> 
-            <!--<div class="carousel-caption"> </div>--> 
+
           </div>
           <div class="item"> <a href="" target="_blank"><img src="images/banner/banner_03.jpg" alt="" class="img-responsive"></a> 
-            <!--<div class="carousel-caption"> </div>--> 
+
           </div>
         </div>
         <a class="left carousel-control" href="#focusslide" role="button" data-slide="prev" rel="nofollow"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">上一个</span> </a> <a class="right carousel-control" href="#focusslide" role="button" data-slide="next" rel="nofollow"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">下一个</span> </a> </div>
@@ -143,8 +144,8 @@
         <p class="note">{{n.content.substring(0,50)}}</p>
       </article>
       </li></div>
-      <script>
-        var vue = new Vue({
+      <!--<script>
+        var newArticle = new Vue({
           el:"#newArticle",
           data:{
             newArticles:[]
@@ -158,7 +159,7 @@
             });
           }
         });
-      </script>
+      </script>-->
       <nav class="pagination" style="display: none;">
         <ul>
           <li class="prev-page"></li>
@@ -234,8 +235,8 @@
         </li>
       </ul>
     </div>
-    <script>
-      var vue2 = new Vue({
+    <!--<script>
+      var hotArticle = new Vue({
         el:"#hotArticle",
         data:{
           hotArticles: [],
@@ -250,7 +251,7 @@
           });
         }
       });
-    </script>
+    </script>-->
   </aside>
 </section>
 
@@ -289,31 +290,135 @@
     </div>
   </div>
 </div>
+
+
 <!--登录注册模态框-->
 <div class="modal fade user-select" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <form action="/Admin/Index/login" method="post">
+    <div class="modal-content" id="loginform">
+      <form action="##" method="post" >
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="loginModalLabel">登录</h4>
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label for="loginModalUserNmae">用户名</label>
-            <input type="text" class="form-control" id="loginModalUserNmae" placeholder="请输入用户名" autofocus maxlength="15" autocomplete="off" required>
+            <label for="loginModalUserNmae">用户名
+              <span v-text="msg.account"></span>
+            </label>
+            <input v-model="user.account" type="text" class="form-control" id="loginModalUserNmae" placeholder="请输入用户名" autofocus maxlength="15" autocomplete="off" required>
           </div>
           <div class="form-group">
-            <label for="loginModalUserPwd">密码</label>
-            <input type="password" class="form-control" id="loginModalUserPwd" placeholder="请输入密码" maxlength="18" autocomplete="off" required>
+            <label for="loginModalUserPwd">密码
+              <span v-text="msg.pwd"></span>
+            </label>
+            <input v-model="user.pwd" type="password" class="form-control" id="loginModalUserPwd" placeholder="请输入密码" maxlength="18" autocomplete="off" required>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="submit" class="btn btn-primary">登录</button>
+          <button @click="login" type="button" class="btn btn-primary">登录</button>
         </div>
       </form>
     </div>
+    <script type="text/javascript">
+      var vue = new Vue({
+        el:"#loginform",
+        data:{
+          user:{
+            account:null,
+            pwd:null
+          },
+          msg:{
+            account:null,
+            pwd:null
+          }
+        },
+        methods:{
+          login(){
+            axios.get("login",{params:this.user}).then( res=>{
+              if(res.data.code == 0){
+                //遍历msg对象所有属性
+                for(name in this.msg){
+                  //遍历报错信息数组
+                  for(var i=0;i<res.data.data.length;i++){
+                    if(name==res.data.data[i].field){
+                      //将报错信息赋值给msg对应属性
+                      this.msg[name] = res.data.data[i].defaultMessage;
+                      break;
+                    }
+                  }
+                }
+              }else{
+
+                //关闭模态窗口
+                $('#loginModal').modal("hide");
+                //修改登录超链接
+                loginBtn.innerText = "欢迎:"+this.user.account;
+                //重置按钮
+                loginModal.id = "清空模态窗口的id，让按钮找不到窗口";
+              }
+            });
+          }
+        },
+        mounted:function(){
+          axios.get('doCheck').then(result=>{
+            console.log(result.data);
+            if(result.data){
+             // loginModal loginform
+              $('#loginform').modal("hide");
+              loginBtn.innerText = "欢迎:"+result.data.user.account;
+              loginModal.id = "清空模态窗口的id，让按钮找不到窗口";
+           }
+          });
+        }
+      });
+
+      var cate = new Vue({
+        el: "#header-navbar",
+        data:{
+          category:[],
+        },
+        created : function(){
+          axios.get("/article/category",{
+          }).then(res=>{
+            this.category = res.data;
+          });
+        }
+
+      });
+
+      var newArticle = new Vue({
+        el:"#newArticle",
+        data:{
+          newArticles:[]
+        },
+        methods:{
+
+        },
+        mounted:function() {
+          axios.get("/article/findNew").then(result=>{
+            this.newArticles = result.data;
+          });
+        }
+      });
+
+      var hotArticle = new Vue({
+        el:"#hotArticle",
+        data:{
+          hotArticles: [],
+        },
+        methods:{
+
+        },
+        created : function(){
+          axios.get("/article/findHot",{
+          }).then(res=>{
+            this.hotArticles = res.data;
+          });
+        }
+      });
+    </script>
   </div>
 </div>
 <!--右键菜单列表-->
@@ -329,5 +434,10 @@
 <script src="js/bootstrap.min.js"></script> 
 <script src="js/jquery.ias.js"></script> 
 <script src="js/scripts.js"></script>
+<!--<script type="text/javascript" V-if="${param.login!=null}">
+  $(function(){
+    $('#loginModal').modal("show");
+  })
+</script>-->
 </body>
 </html>

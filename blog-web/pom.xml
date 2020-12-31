@@ -14,7 +14,15 @@
     <dependencies>
         <dependency>
             <groupId>com.yc</groupId>
+            <artifactId>blog-admin-zuul</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yc</groupId>
             <artifactId>blog-article-zuul</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yc</groupId>
+            <artifactId>blog-comment-zuul</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,6 +52,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yc</groupId>
+            <artifactId>blog-api-user</artifactId>
         </dependency>
 
     </dependencies>

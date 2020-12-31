@@ -27,6 +27,14 @@ zuul:
       path: /blog-proxy/**                   # 访问的路径
       serviceId: blog-restapi-artilce     #到eureka上找MICROSERVICE-PROVIDER-PICLIB服务名，将来有多少配置多少
       sensitiveHeaders:            # zuul是基于过滤器机制，它会自动过滤掉敏感头, 这里设置要过滤的敏感头集合为空  针对的是zuul服务
+    comment:
+      path: /comment-proxy/**
+      serviceId: blog-restapi-comment
+      sensitiveHeaders:
+    user:     #第一个路由服务
+      path: /user-proxy/**                   # 访问的路径
+      serviceId: blog-restapi-user     #到eureka上找MICROSERVICE-PROVIDER-PICLIB服务名，将来有多少配置多少
+      sensitiveHeaders:
   ignored-services:      # "*"代表隐藏所有的服务名，这样就不能通过zuul直接用服务名访问真实的服务了.
     "*"
   prefix: /yc-api    #公共前缀       /yc-api/piclib-proxy/piclib/1

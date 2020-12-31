@@ -1,16 +1,15 @@
 package com.yc.blog.biz;
 
-import javax.annotation.Resource;
-
-import com.yc.blog.bean.User;
 import com.yc.blog.dao.UserMapper;
+import com.yc.blog.domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class UserBiz {
-	
-	@Resource
+
+	@Autowired(required = false)
 	private UserMapper um;
 	
 	//业务层逻辑验证

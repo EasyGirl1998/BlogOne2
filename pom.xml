@@ -27,6 +27,12 @@
         <module>blog-api</module>
         <module>blog-article-zuul</module>
         <module>blog-web</module>
+        <module>blog-comment-zuul</module>
+        <module>blog-api-comment</module>
+        <module>blog-restapi-comment</module>
+        <module>blog-admin-zuul</module>
+        <module>blog-api-admin</module>
+        <module>blog-restapi-admin</module>
     </modules>
 
     <name>blog</name>
@@ -99,6 +105,11 @@
             <!--自己写的模块-->
             <dependency>
                 <groupId>com.yc</groupId>
+                <artifactId>blog-admin-zuul</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yc</groupId>
                 <artifactId>blog-api-article</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
@@ -112,6 +123,11 @@
                 <artifactId>blog-api</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
+            <dependency>
+                <groupId>com.yc</groupId>
+                <artifactId>blog-api-comment</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.yc</groupId>
@@ -119,6 +135,11 @@
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.yc</groupId>
+                <artifactId>blog-comment-zuul</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

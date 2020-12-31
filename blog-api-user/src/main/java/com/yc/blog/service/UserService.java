@@ -1,3 +1,4 @@
+/*
 package com.yc.blog.service;
 
 import com.yc.blog.bean.Result;
@@ -130,11 +131,14 @@ public class UserService {
         return new Result(1,"密码修改成功");
     }
 
-   /* public Result uploadImg(@RequestParam("img") MultipartFile file) throws IllegalStateException, IOException {
+   */
+/* public Result uploadImg(@RequestParam("img") MultipartFile file) throws IllegalStateException, IOException {
         file.transferTo(new File("D:/JavaStudyFiles/Season-3/photo/uploadpics/"+file.getOriginalFilename()));
         //回传图片的web路径
         return new Result(1,"/imgs/"+file.getOriginalFilename());
         //return new Result(1,"文件上传成功！");
-    }*/
+    }*//*
+
 
 }
+*/

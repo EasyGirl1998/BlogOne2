@@ -7,23 +7,29 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="blog-restapi-user" />
-        <module name="blog-api-user" />
-        <module name="blog-article-zuul" />
-        <module name="blog-restapi-article" />
-        <module name="base-eureka2" />
-        <module name="base-dashboard" />
-        <module name="blog-api" />
-        <module name="base-config" />
-        <module name="base-eureka3" />
-        <module name="base-zuul" />
         <module name="base-security" />
-        <module name="blog-api-article" />
-        <module name="blog-web" />
-        <module name="base-config2" />
+        <module name="blog-api-user" />
+        <module name="base-dashboard" />
+        <module name="blog-article-zuul" />
+        <module name="blog-restapi-user" />
+        <module name="blog-restapi-comment" />
+        <module name="blog-api-comment" />
         <module name="base-eureka" />
-        <module name="base-config3" />
+        <module name="base-config" />
+        <module name="blog-api" />
+        <module name="blog-api-admin" />
+        <module name="blog-comment-zuul" />
+        <module name="blog-web" />
+        <module name="blog-api-article" />
+        <module name="base-eureka3" />
+        <module name="base-eureka2" />
+        <module name="base-zuul" />
+        <module name="blog-admin-zuul" />
+        <module name="blog-restapi-admin" />
+        <module name="blog-restapi-article" />
         <module name="base-turbine" />
+        <module name="base-config3" />
+        <module name="base-config2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -38,14 +44,21 @@
       <module name="base-turbine" target="1.8" />
       <module name="base-zuul" target="1.8" />
       <module name="blog" target="1.8" />
+      <module name="blog-admin-zuul" target="1.8" />
       <module name="blog-api" target="1.8" />
+      <module name="blog-api-admin" target="1.8" />
       <module name="blog-api-article" target="1.8" />
+      <module name="blog-api-comment" target="1.8" />
       <module name="blog-api-user" target="1.8" />
       <module name="blog-article-zuul" target="1.8" />
+      <module name="blog-comment-zuul" target="1.8" />
+      <module name="blog-restapi-admin" target="1.8" />
       <module name="blog-restapi-article" target="1.8" />
+      <module name="blog-restapi-comment" target="1.8" />
       <module name="blog-restapi-user" target="1.8" />
       <module name="blog-user" target="1.8" />
       <module name="blog-web" target="1.8" />
+      <module name="blog-zuul-client" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

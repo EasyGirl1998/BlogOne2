@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>个人博客</title>
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/style1.css" />
+	<script src="js/vue.min.js"></script>
+	<script src="js/axios.min.js"></script>
+</head>
+<body>
+<div id="header" class="wrap">
+</div>
+<div id="login" class="wrap">
+	<div class="main">
+		<div class="corner"></div>
+		<div class="introduce">
+			<h2>源辰信息</h2>
+			<p>博客登录</p>
+		</div>
+		<div class="login">
+			<h2>用户登录</h2>
+				<dl id="loginBox">
+					<dt>用户名：</dt>
+					<dd><input type="text" class="input-text" name="userId" v-model="account" value=""/></dd>
+					<dt>密　码：</dt>
+					<dd><input type="password" class="input-text" name="password" v-model="pwd" value=""/></dd>
+					<dt></dt>
+					<dd>
+						<button type="button" onclick="login()">登录</button>
+						<br><a href="register.html">新用户注册</a></dd>
+				</dl>
+			<div class="error"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var vue=new Vue({
+		el: "#login",
+		data: {
+			account: '',
+			pwd: '',
+		},
+		method: {
+		}
+	});
+	function login() {
+		axios({
+			url:'/admin/login?account='+this.account+"&"+"pwd="+this.pwd,
+			method:'get',
+		}).then(result=>{
+			console.log(result);
+			if (result.data.code==0){
+				alert(result.data.msg);
+			}else{
+				alert("登录成功！！！！");
+				localStorage.setItem("token",result.data.token);
+				window.location.href="data-tables.html";
+				console.log(result);
+			}
+		})
+	}
+</script>
+<div class="wrap">
+</div>
+<div id="footer" class="wrap">
+	源辰信息 &copy; 版权所有
+</div>
+</body>
+</html>
